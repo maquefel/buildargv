@@ -1,0 +1,17 @@
+language: c
+sudo: required
+dist: bionic
+compiler: gcc
+install: make
+addons:
+  apt:
+    packages:
+      - lcov
+      - make
+      - check
+install:
+    - pip install --user cpp-coveralls
+script:
+  - make
+after_success:
+  - coveralls --gcov-options '\-lp'
